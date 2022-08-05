@@ -1,5 +1,11 @@
 import * as cmn from './common';
 
+import * as vcu from "./vscodeCustomUtil";
+
+const insertCreate=vcu.getConfiguration("newfileasmd.insertCreate");
+const insertAuthor=vcu.getConfiguration("newfileasmd.insertAuthor");
+const author=vcu.getConfiguration("newfileasmd.author");
+
 export class TextGenerator{
     text:string='';
     title:string='';
@@ -30,11 +36,15 @@ export class TextGenerator{
     
     markdown() {
         let text='';
-        if(this.dateString!==undefined){
-            text+=this.dateString.formatSlash()+"\n\n";
+        if(this.dateString!==undefined&&insertCreate){
+            text+="create : "+this.dateString.formatSlash()+"\n";
         }
+        if(author!==undefined &&author.length>0&&insertAuthor){
+            text+="author : "+author+"\n";
+        }
+
         if (this.title!==""&&!this.modeNameIsDate){
-            text+='# '+this.title+'\n\n';
+            text+='\n# '+this.title+'\n\n';
         }
 
         text+=this.line20();

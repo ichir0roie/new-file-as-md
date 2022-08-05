@@ -27,6 +27,25 @@
         "when": "explorerResourceIsFolder"
       }
     ],
+    
+    "configuration": {
+      "title": "New File As MD configuration.",
+      "properties": {
+        "newfileasmd.author": {
+          "type": "string",
+          "default": "",
+          "description": "author text when create markdown file."
+        },
+        "newfileasmd.insertCreate": {
+          "type": "boolean",
+          "default": true
+        },
+        "newfileasmd.insertAuthor": {
+          "type": "string",
+          "default": true
+        }
+      }
+    },
     "commands": [
       {
         "command": "newfileasmd.newFileAsMD",

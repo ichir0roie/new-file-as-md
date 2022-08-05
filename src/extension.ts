@@ -97,7 +97,6 @@ export async function createFileAdjusted(basePath:string,input:string|undefined=
 		extension="md";
 	}
 
-
 	
 	let content=new TextGenerator(filename,extension,dateString,modeNameIsDate).generate();
 	createFilePath=basePath+'/'+filename+"."+extension;
