@@ -40,7 +40,7 @@
           "default": true
         },
         "newfileasmd.insertAuthor": {
-          "type": "string",
+          "type": "boolean",
           "default": true
         }
       }
