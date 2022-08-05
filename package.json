@@ -10,7 +10,7 @@
   "license": "The Unlicense",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ichir0roie/tools/tree/main/vscodeExtensions/newmarkdown"
+    "url": "https://github.com/ichir0roie/new-file-as-md"
   },
   "categories": [
     "Other"
