@@ -2,7 +2,7 @@
   "name": "newfileasmd",
   "displayName": "New File As MD",
   "description": "",
-  "version": "0.20.0",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.69.0"
   },
@@ -27,7 +27,6 @@
         "when": "explorerResourceIsFolder"
       }
     ],
-    
     "configuration": {
       "title": "New File As MD configuration.",
       "properties": {
