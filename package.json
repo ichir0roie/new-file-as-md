@@ -55,8 +55,7 @@
       "explorer/context": [
         {
           "command": "newfileasmd.newFileAsMD",
-          "when": "explorerResourceIsFolder",
-          "group": "navigation@2"
+          "when": "explorerResourceIsFolder"
         }
       ]
     }
