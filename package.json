@@ -42,6 +42,14 @@
         "newfileasmd.insertAuthor": {
           "type": "boolean",
           "default": true
+        },
+        "newfileasmd.authorPrefix": {
+          "type": "string",
+          "default": "author : "
+        },
+        "newfileasmd.createPrefix": {
+          "type": "string",
+          "default": "create : "
         }
       }
     },
