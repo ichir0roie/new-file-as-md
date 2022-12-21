@@ -5,39 +5,40 @@ import * as vcu from "./vscodeCustomUtil";
 export class TextGenerator {
     text: string = '';
     title: string = '';
-    extension: string = '';
     dateString: cmn.DateString | undefined;
-    modeNameIsDate: boolean;
+    inputIsNull: boolean;
 
     constructor(
         title: string,
-        extension: string,
         dateString: cmn.DateString | undefined,
-        modeNameIsDate: boolean) {
+        inputIsNull: boolean) {
         this.title = title;
-        this.extension = extension;
         this.dateString = dateString;
-        this.modeNameIsDate = modeNameIsDate;
+        this.inputIsNull = inputIsNull;
     }
 
-    generate() {
 
-        switch (this.extension) {
-            case 'md':
-                this.markdown();
-        }
-
-        return this.text;
-    }
-
-    markdown() {
-        const insertCreate: boolean = vcu.getConfiguration("newfileasmd.insertCreate");
-        const insertAuthor: boolean = vcu.getConfiguration("newfileasmd.insertAuthor");
-        const authorPrefix: string = vcu.getConfiguration("newfileasmd.authorPrefix");
-        const createPrefix: string = vcu.getConfiguration("newfileasmd.createPrefix");
+    generate(): string {
         const author = vcu.getConfiguration("newfileasmd.author");
+        const insertCreate: boolean = vcu.getConfiguration("newfileasmd.generate.create.active");
+        const createPrefix: string = vcu.getConfiguration("newfileasmd.generate.create.format");
+        const insertAuthor: boolean = vcu.getConfiguration("newfileasmd.generate.author.active");
+        const authorPrefix: string = vcu.getConfiguration("newfileasmd.generate.author.format");
+        const generateOnNoInput: boolean = vcu.getConfiguration("newfileasmd.generateInitializeText.noInput");
+        const generateOnHaveInput: boolean = vcu.getConfiguration("newfileasmd.generateInitializeText.haveInput");
 
         let text = '';
+
+        let generate = false;
+        if (this.inputIsNull && generateOnNoInput) {
+            generate = true;
+        }
+        if (!this.inputIsNull && generateOnHaveInput) {
+            generate = true;
+        }
+        if (!generate) {
+            return "";
+        }
 
         if (this.dateString !== undefined && insertCreate) {
             text += createPrefix + this.dateString.formatSlash() + "\n";
@@ -46,13 +47,15 @@ export class TextGenerator {
             text += authorPrefix + author + "\n";
         }
 
-        if (this.title !== "" && !this.modeNameIsDate) {
-            text += '\n# ' + this.title + '\n\n';
-        }
+        // if (this.title !== "" && !this.inputIsNull) {
+        //     text += '\n# ' + this.title + '\n\n';
+        // }
 
         text += this.line20();
 
         this.text = text;
+
+        return text;
     }
 
 

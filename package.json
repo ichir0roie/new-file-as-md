@@ -35,21 +35,39 @@
           "default": "",
           "description": "author text when create markdown file."
         },
-        "newfileasmd.insertCreate": {
+        "newfileasmd.generate.create.active": {
           "type": "boolean",
           "default": true
         },
-        "newfileasmd.insertAuthor": {
+        "newfileasmd.generate.create.format": {
+          "type": "string",
+          "default": "create : "
+        },
+        "newfileasmd.generate.author.active": {
           "type": "boolean",
           "default": true
         },
-        "newfileasmd.authorPrefix": {
+        "newfileasmd.generate.author.format": {
           "type": "string",
           "default": "author : "
         },
-        "newfileasmd.createPrefix": {
+        "newfileasmd.filenameFormat.noInput": {
           "type": "string",
-          "default": "create : "
+          "default": "${date}-${time}.md",
+          "description": "${date}=yyyy-mm-dd,${time}=hhmmss"
+        },
+        "newfileasmd.filenameFormat.haveInput": {
+          "type": "string",
+          "default": "${date}_${input}.md",
+          "description": "${date}=yyyy-mm-dd,${time}=hhmmss,${input}=input text on dialog"
+        },
+        "newfileasmd.generateInitializeText.noInput": {
+          "type": "boolean",
+          "default": "true"
+        },
+        "newfileasmd.generateInitializeText.haveInput": {
+          "type": "boolean",
+          "default": "true"
         }
       }
     },
