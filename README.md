@@ -2,35 +2,16 @@
 
 ## how to use
 
-in Explorer, select folder and right click.
 
-type filename to InputBox, rule is next.
+1. select folder
+2. right click
+3. New File As MD
+4. input filename
 
-+ ""
-  + yyyy-mm-dd-hhmmss.md
-+ "."
-  + .md
-+ ".-"
-  + .-
-+ "-"
-  + -.md
-+ "-.-"
-  + -.-
-+ ".."
-  + yyyy-mm-dd-hhmmss.md
-+ "..-"
-  + yyyy-mm-dd-hhmmss.-
-
+change settings as you like.
 
 ### images
 
 ![](.mdImages/README/20220724_134912.png)
 ![](.mdImages/README/20220724_134939.png)
 ![](.mdImages/README/20220724_135012.png)
-
-# TODO
-+ オプション
-+ フォルダに対応
-+ ..のバグ対応
-
-vsc-extensionのリポジトリは独立させる！
