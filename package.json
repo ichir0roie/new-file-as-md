@@ -2,7 +2,7 @@
   "name": "newfileasmd",
   "displayName": "New File As MD",
   "description": "",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "engines": {
     "vscode": "^1.69.0"
   },
