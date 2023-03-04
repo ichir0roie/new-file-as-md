@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import { create } from 'domain';
-import { stat, write, writeFile, existsSync } from 'fs';
+import { stat, write, writeFile, existsSync, lstatSync } from 'fs';
 import { promisify } from 'util';
 import * as vscode from 'vscode';
 
@@ -27,7 +27,6 @@ export function activate(context: vscode.ExtensionContext) {
 	// https://stackoverflow.com/questions/51961457/how-to-get-file-name-or-path-in-vscode-extension-when-user-right-click-on-file-i
 
 	let disposable = vscode.commands.registerCommand('newfileasmd.newFileAsMD', (uri: vscode.Uri) => {
-		console.log('run createFile');
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		createFile(uri);
@@ -36,12 +35,22 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 
-async function createFile(uri: vscode.Uri) {
+async function createFile(uri: vscode.Uri | undefined) {
 	let basePath: string | undefined = "";
 	if (uri === undefined) {
 		basePath = await getCurrentFolder();
+		if (basePath === undefined) {
+			basePath = vscode.workspace.rootPath;
+		}
 	} else {
-		basePath = uri.fsPath;
+		if (lstatSync(uri.fsPath).isDirectory()) {
+			basePath = uri.fsPath;
+		} else {
+			let p = uri.fsPath;
+			p = p.replaceAll("\\", "/");
+			let place = p.lastIndexOf("/");
+			basePath = p.substring(0, place);
+		}
 	}
 	if (basePath === undefined) {
 		return;

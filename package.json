@@ -22,9 +22,7 @@
   "contributes": {
     "keybindings": [
       {
-        "command": "newfileasmd.newFileAsMD",
-        "key": "ctrl+alt+b",
-        "when": "explorerResourceIsFolder"
+        "command": "newfileasmd.newFileAsMD"
       }
     ],
     "configuration": {
@@ -80,8 +78,7 @@
     "menus": {
       "explorer/context": [
         {
-          "command": "newfileasmd.newFileAsMD",
-          "when": "explorerResourceIsFolder"
+          "command": "newfileasmd.newFileAsMD"
         }
       ]
     }
